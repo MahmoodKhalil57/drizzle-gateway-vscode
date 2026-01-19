@@ -12,12 +12,73 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "properties": {
+      "drizzleGateway.binaryPath": {
+        "type": "string",
+        "default": "",
+        "description": "Path to the binary. Leave empty to auto-download."
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "drizzle-gateway-explorer",
+          "title": "Drizzle Gateway",
+          "icon": "$(database)"
+        }
+      ]
+    },
+    "views": {
+      "drizzle-gateway-explorer": [
+        {
+          "id": "drizzleGatewayView",
+          "name": "Controls",
+          "icon": "$(server)"
+        }
+      ]
+    },
+    "view/title": [
+      {
+        "command": "drizzleGateway.updateBinary",
+        "when": "view == drizzleGatewayView",
+        "group": "navigation"
+      }
+    ],
     "commands": [
       {
-        "command": "drizzle-gateway-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "drizzleGateway.start",
+        "title": "Drizzle Gateway: Start"
+      },
+      {
+        "command": "drizzleGateway.stop",
+        "title": "Drizzle Gateway: Stop"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Drizzle Gateway",
+      "properties": {
+        "drizzleGateway.binaryPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the Drizzle Gateway binary executable."
+        },
+        "drizzleGateway.databaseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "The connection string for your database (DATABASE_URL)."
+        },
+        "drizzleGateway.port": {
+          "type": "number",
+          "default": 4983,
+          "description": "Port to run the Drizzle Gateway on."
+        },
+        "drizzleGateway.password": {
+          "type": "string",
+          "default": "",
+          "description": "Master password for the Gateway (MASTERPASS)."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
