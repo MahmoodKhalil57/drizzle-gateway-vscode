@@ -2,7 +2,7 @@
   "name": "drizzle-gateway-vscode",
   "displayName": "Drizzle Gateway VSCode",
   "description": "Run Drizzle Gateway directly from VS Code.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "mahmoodkhalil57",
   "repository": {
     "type": "git",
